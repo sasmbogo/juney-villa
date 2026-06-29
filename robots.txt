@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /guest/
+Disallow: /api/
+Disallow: /storage/
+Disallow: /install.php
+
+Sitemap: https://juneyvillaszanzibar.co.tz/sitemap.xml
