@@ -10,11 +10,14 @@ use App\Core\Database;
 
 class AuthController extends Controller
 {
-    private User $userModel;
+    private ?User $userModel = null;
 
-    public function __construct()
+    private function getUserModel(): User
     {
-        $this->userModel = new User();
+        if ($this->userModel === null) {
+            $this->userModel = new User();
+        }
+        return $this->userModel;
     }
 
     public function loginForm(): void
@@ -44,7 +47,7 @@ class AuthController extends Controller
             return;
         }
 
-        $user = $this->userModel->authenticate($email, $password);
+        $user = $this->getUserModel()->authenticate($email, $password);
 
         if (!$user) {
             // Log failed attempt
@@ -74,7 +77,7 @@ class AuthController extends Controller
         // Remember me
         if ($remember) {
             $token = bin2hex(random_bytes(32));
-            $this->userModel->update((int)$user['id'], ['remember_token' => $token]);
+            $this->getUserModel()->update((int)$user['id'], ['remember_token' => $token]);
             setcookie('remember_token', $token, time() + (86400 * 30), '/', '', false, true);
         }
 
@@ -126,7 +129,7 @@ class AuthController extends Controller
         }
 
         // Check if email exists
-        $existing = $this->userModel->findByEmail($data['email']);
+        $existing = $this->getUserModel()->findByEmail($data['email']);
         if ($existing) {
             $errors['email'][] = 'This email is already registered.';
         }
@@ -140,7 +143,7 @@ class AuthController extends Controller
         }
 
         try {
-            $userId = $this->userModel->createUser([
+            $userId = $this->getUserModel()->createUser([
                 'role_id' => 9,
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
@@ -151,7 +154,7 @@ class AuthController extends Controller
             ]);
 
             // Get verification token
-            $user = $this->userModel->find($userId);
+            $user = $this->getUserModel()->find($userId);
 
             // TODO: Send verification email
             $this->setFlash('success', 'Registration successful! Please check your email to verify your account.');
@@ -182,11 +185,11 @@ class AuthController extends Controller
         }
 
         $email = $this->getInput('email', '');
-        $user = $this->userModel->findByEmail($email);
+        $user = $this->getUserModel()->findByEmail($email);
 
         if ($user) {
             $token = bin2hex(random_bytes(32));
-            $this->userModel->update((int)$user['id'], [
+            $this->getUserModel()->update((int)$user['id'], [
                 'password_reset_token' => $token,
                 'password_reset_expires' => date('Y-m-d H:i:s', strtotime('+1 hour')),
             ]);
@@ -225,7 +228,7 @@ class AuthController extends Controller
         }
 
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
-        $this->userModel->update((int)$user['id'], [
+        $this->getUserModel()->update((int)$user['id'], [
             'password' => $hashedPassword,
             'password_reset_token' => '',
             'password_reset_expires' => null,
@@ -249,7 +252,7 @@ class AuthController extends Controller
             return;
         }
 
-        $this->userModel->update((int)$user['id'], [
+        $this->getUserModel()->update((int)$user['id'], [
             'email_verified_at' => date('Y-m-d H:i:s'),
             'email_verification_token' => '',
         ]);

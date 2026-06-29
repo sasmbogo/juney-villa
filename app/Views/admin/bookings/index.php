@@ -1,16 +1,16 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
         <div class="btn-group btn-group-sm">
-            <a href="/admin/bookings" class="btn <?= !$currentStatus ? 'btn-dark' : 'btn-outline-dark' ?>">All</a>
-            <a href="/admin/bookings?status=pending" class="btn <?= $currentStatus === 'pending' ? 'btn-dark' : 'btn-outline-dark' ?>">Pending</a>
-            <a href="/admin/bookings?status=confirmed" class="btn <?= $currentStatus === 'confirmed' ? 'btn-dark' : 'btn-outline-dark' ?>">Confirmed</a>
-            <a href="/admin/bookings?status=checked_in" class="btn <?= $currentStatus === 'checked_in' ? 'btn-dark' : 'btn-outline-dark' ?>">Checked In</a>
-            <a href="/admin/bookings?status=cancelled" class="btn <?= $currentStatus === 'cancelled' ? 'btn-dark' : 'btn-outline-dark' ?>">Cancelled</a>
+            <a href="<?= url('/admin/bookings') ?>" class="btn <?= !$currentStatus ? 'btn-dark' : 'btn-outline-dark' ?>">All</a>
+            <a href="<?= url('/admin/bookings?status=pending') ?>" class="btn <?= $currentStatus === 'pending' ? 'btn-dark' : 'btn-outline-dark' ?>">Pending</a>
+            <a href="<?= url('/admin/bookings?status=confirmed') ?>" class="btn <?= $currentStatus === 'confirmed' ? 'btn-dark' : 'btn-outline-dark' ?>">Confirmed</a>
+            <a href="<?= url('/admin/bookings?status=checked_in') ?>" class="btn <?= $currentStatus === 'checked_in' ? 'btn-dark' : 'btn-outline-dark' ?>">Checked In</a>
+            <a href="<?= url('/admin/bookings?status=cancelled') ?>" class="btn <?= $currentStatus === 'cancelled' ? 'btn-dark' : 'btn-outline-dark' ?>">Cancelled</a>
         </div>
     </div>
     <div class="d-flex gap-2">
         <input type="text" id="tableSearch" class="form-control form-control-sm" placeholder="Search..." style="width: 200px;">
-        <a href="/admin/bookings/create" class="btn btn-gold btn-sm"><i class="bi bi-plus-lg me-1"></i>New Booking</a>
+        <a href="<?= url('/admin/bookings/create') ?>" class="btn btn-gold btn-sm"><i class="bi bi-plus-lg me-1"></i>New Booking</a>
     </div>
 </div>
 
@@ -24,7 +24,7 @@
                 <tbody>
                     <?php foreach ($bookings as $b): ?>
                     <tr>
-                        <td><a href="/admin/bookings/view/<?= $b['id'] ?>" class="fw-semibold text-gold"><?= e($b['booking_number']) ?></a></td>
+                        <td><a href="<?= url('/admin/bookings/view/<?= $b['id'] ?>') ?>" class="fw-semibold text-gold"><?= e($b['booking_number']) ?></a></td>
                         <td><?= e($b['guest_name']) ?></td>
                         <td><?= e($b['villa_name']) ?></td>
                         <td><?= formatDate($b['check_in']) ?></td>
@@ -35,7 +35,7 @@
                             <span class="badge <?= $cls ?>"><?= ucfirst(str_replace('_',' ',$b['status'])) ?></span>
                         </td>
                         <td>
-                            <a href="/admin/bookings/view/<?= $b['id'] ?>" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></a>
+                            <a href="<?= url('/admin/bookings/view/<?= $b['id'] ?>') ?>" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

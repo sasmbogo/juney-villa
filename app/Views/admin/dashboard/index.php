@@ -52,7 +52,7 @@
         <div class="admin-card">
             <div class="card-header">
                 <h6>Revenue Overview <?= date('Y') ?></h6>
-                <a href="/admin/reports/revenue" class="btn btn-sm btn-outline-secondary">View Report</a>
+                <a href="<?= url('/admin/reports/revenue') ?>" class="btn btn-sm btn-outline-secondary">View Report</a>
             </div>
             <div class="card-body">
                 <div class="chart-container">
@@ -81,7 +81,7 @@
         <div class="admin-card">
             <div class="card-header">
                 <h6>Recent Bookings</h6>
-                <a href="/admin/bookings" class="btn btn-sm btn-outline-secondary">View All</a>
+                <a href="<?= url('/admin/bookings') ?>" class="btn btn-sm btn-outline-secondary">View All</a>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -99,7 +99,7 @@
                         <tbody>
                             <?php foreach (array_slice($recentBookings ?? [], 0, 8) as $booking): ?>
                             <tr>
-                                <td><a href="/admin/bookings/view/<?= $booking['id'] ?>" class="fw-semibold"><?= e($booking['booking_number']) ?></a></td>
+                                <td><a href="<?= url('/admin/bookings/view/<?= $booking['id'] ?>') ?>" class="fw-semibold"><?= e($booking['booking_number']) ?></a></td>
                                 <td><?= e($booking['guest_name']) ?></td>
                                 <td><?= e($booking['villa_name']) ?></td>
                                 <td><?= formatDate($booking['check_in']) ?></td>
@@ -132,11 +132,11 @@
             <div class="card-header"><h6>Quick Actions</h6></div>
             <div class="card-body">
                 <div class="d-flex flex-column gap-2">
-                    <a href="/admin/bookings/create" class="quick-action"><i class="bi bi-plus-circle"></i><span>New Booking</span></a>
-                    <a href="/admin/villas/create" class="quick-action"><i class="bi bi-house-add"></i><span>Add Villa</span></a>
-                    <a href="/admin/blog/create" class="quick-action"><i class="bi bi-pencil-square"></i><span>New Blog Post</span></a>
-                    <a href="/admin/reports" class="quick-action"><i class="bi bi-file-earmark-bar-graph"></i><span>Generate Report</span></a>
-                    <a href="/admin/settings" class="quick-action"><i class="bi bi-gear"></i><span>System Settings</span></a>
+                    <a href="<?= url('/admin/bookings/create') ?>" class="quick-action"><i class="bi bi-plus-circle"></i><span>New Booking</span></a>
+                    <a href="<?= url('/admin/villas/create') ?>" class="quick-action"><i class="bi bi-house-add"></i><span>Add Villa</span></a>
+                    <a href="<?= url('/admin/blog/create') ?>" class="quick-action"><i class="bi bi-pencil-square"></i><span>New Blog Post</span></a>
+                    <a href="<?= url('/admin/reports') ?>" class="quick-action"><i class="bi bi-file-earmark-bar-graph"></i><span>Generate Report</span></a>
+                    <a href="<?= url('/admin/settings') ?>" class="quick-action"><i class="bi bi-gear"></i><span>System Settings</span></a>
                 </div>
             </div>
         </div>

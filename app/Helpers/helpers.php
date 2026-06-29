@@ -10,6 +10,15 @@ if (!function_exists('base_url')) {
     function base_url(string $path = ''): string
     {
         $url = rtrim($_ENV['APP_URL'] ?? '', '/');
+
+        // Auto-detect base URL if not configured
+        if (empty($url)) {
+            $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+            $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+            $scriptDir = dirname($_SERVER['SCRIPT_NAME'] ?? '');
+            $url = $scheme . '://' . $host . rtrim($scriptDir, '/');
+        }
+
         return $path ? $url . '/' . ltrim($path, '/') : $url;
     }
 }
@@ -18,6 +27,25 @@ if (!function_exists('asset')) {
     function asset(string $path): string
     {
         return base_url($path) . '?v=' . ($_ENV['APP_VERSION'] ?? '1.0');
+    }
+}
+
+if (!function_exists('url')) {
+    function url(string $path = ''): string
+    {
+        // Get the subdirectory path (e.g., /juney-villa)
+        static $basePath = null;
+        if ($basePath === null) {
+            $scriptName = $_SERVER['SCRIPT_NAME'] ?? '/index.php';
+            $basePath = rtrim(dirname($scriptName), '/\\');
+            if ($basePath === '.' || $basePath === '/') {
+                $basePath = '';
+            }
+        }
+        if (empty($path) || $path === '/') {
+            return $basePath ?: '/';
+        }
+        return $basePath . '/' . ltrim($path, '/');
     }
 }
 

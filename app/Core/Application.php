@@ -27,7 +27,7 @@ class Application
             $url = $this->parseUrl();
             $method = $_SERVER['REQUEST_METHOD'];
             $this->router->dispatch($method, $url);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $this->handleException($e);
         }
     }
@@ -47,7 +47,7 @@ class Application
         require_once BASE_PATH . '/routes/admin.php';
     }
 
-    private function handleException(\Exception $e): void
+    private function handleException(\Throwable $e): void
     {
         $debug = filter_var($_ENV['APP_DEBUG'] ?? false, FILTER_VALIDATE_BOOLEAN);
 

@@ -100,9 +100,9 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top main-nav" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top main-nav" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="<?= url('/') ?>">
                 <span class="brand-text">JUNEY<span class="text-gold">VILLA</span></span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
@@ -110,22 +110,22 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/villas">Villas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/booking">Book Now</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= url('/') ?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= url('/villas') ?>">Villas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= url('/booking') ?>">Book Now</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= url('/gallery') ?>">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= url('/blog') ?>">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= url('/about') ?>">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= url('/contact') ?>">Contact</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-2">
                     <?php if (isLoggedIn()): ?>
-                        <a href="<?= isAdmin() ? '/admin/dashboard' : '/guest/dashboard' ?>" class="btn btn-outline-light btn-sm">
+                        <a href="<?= url(isAdmin() ? '/admin/dashboard' : '/guest/dashboard') ?>" class="btn btn-outline-light btn-sm">
                             <i class="bi bi-person"></i> Dashboard
                         </a>
                     <?php else: ?>
-                        <a href="/login" class="btn btn-outline-light btn-sm">Login</a>
-                        <a href="/register" class="btn btn-gold btn-sm">Register</a>
+                        <a href="<?= url('/login') ?>" class="btn btn-outline-light btn-sm">Login</a>
+                        <a href="<?= url('/register') ?>" class="btn btn-gold btn-sm">Register</a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -140,13 +140,13 @@
         </div>
         <div class="offcanvas-body">
             <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/villas">Villas</a></li>
-                <li class="nav-item"><a class="nav-link" href="/booking">Book Now</a></li>
-                <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= url('/') ?>">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= url('/villas') ?>">Villas</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= url('/booking') ?>">Book Now</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= url('/gallery') ?>">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= url('/blog') ?>">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= url('/about') ?>">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= url('/contact') ?>">Contact</a></li>
             </ul>
         </div>
     </div>
@@ -174,22 +174,22 @@
                 <div class="col-lg-2 col-md-4">
                     <h6 class="text-uppercase mb-3">Quick Links</h6>
                     <ul class="list-unstyled footer-links">
-                        <li><a href="/villas">Our Villas</a></li>
-                        <li><a href="/booking">Book Now</a></li>
-                        <li><a href="/gallery">Gallery</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="<?= url('/villas') ?>">Our Villas</a></li>
+                        <li><a href="<?= url('/booking') ?>">Book Now</a></li>
+                        <li><a href="<?= url('/gallery') ?>">Gallery</a></li>
+                        <li><a href="<?= url('/blog') ?>">Blog</a></li>
+                        <li><a href="<?= url('/about') ?>">About Us</a></li>
+                        <li><a href="<?= url('/contact') ?>">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <h6 class="text-uppercase mb-3">Our Villas</h6>
                     <ul class="list-unstyled footer-links">
-                        <li><a href="/villas/villa-ocean-paradise">Villa Ocean Paradise</a></li>
-                        <li><a href="/villas/villa-sunset">Villa Sunset</a></li>
-                        <li><a href="/villas/villa-palm">Villa Palm</a></li>
-                        <li><a href="/villas/villa-coral">Villa Coral</a></li>
-                        <li><a href="/villas/villa-royal-zanzibar">Villa Royal Zanzibar</a></li>
+                        <li><a href="<?= url('/villas/villa-ocean-paradise') ?>">Villa Ocean Paradise</a></li>
+                        <li><a href="<?= url('/villas/villa-sunset') ?>">Villa Sunset</a></li>
+                        <li><a href="<?= url('/villas/villa-palm') ?>">Villa Palm</a></li>
+                        <li><a href="<?= url('/villas/villa-coral') ?>">Villa Coral</a></li>
+                        <li><a href="<?= url('/villas/villa-royal-zanzibar') ?>">Villa Royal Zanzibar</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4">

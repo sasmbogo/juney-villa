@@ -9,7 +9,7 @@
     <div class="container">
         <!-- Search Form -->
         <div class="card border-0 shadow rounded-3 p-4 mb-5" style="margin-top: -60px; position: relative; z-index: 10;">
-            <form action="/booking/search" method="GET" class="row g-3 align-items-end">
+            <form action="<?= url('/booking/search') ?>" method="GET" class="row g-3 align-items-end">
                 <div class="col-md-3">
                     <label class="form-label fw-semibold">Check In</label>
                     <input type="text" name="check_in" class="form-control flatpickr-date" placeholder="Select date" required>
@@ -55,7 +55,7 @@
                             <span><i class="bi bi-droplet"></i> <?= $villa['bathrooms'] ?></span>
                             <span><i class="bi bi-people"></i> <?= $villa['max_guests'] ?></span>
                         </div>
-                        <a href="/booking/create/<?= e($villa['slug']) ?>" class="btn btn-gold w-100">Book Now</a>
+                        <a href="<?= url('/booking/create/' . e($villa['slug'])) ?>" class="btn btn-gold w-100">Book Now</a>
                     </div>
                 </div>
             </div>

@@ -17,7 +17,7 @@
             <div class="col-lg-7">
                 <?php if ($flash = flash('success')): ?><div class="alert alert-success"><?= e($flash) ?></div><?php endif; ?>
                 <?php if ($flash = flash('error')): ?><div class="alert alert-danger"><?= e($flash) ?></div><?php endif; ?>
-                <form action="/contact" method="POST">
+                <form action="<?= url('/contact') ?>" method="POST">
                     <?= csrf_field() ?>
                     <div class="row g-3">
                         <div class="col-md-6"><input type="text" name="name" class="form-control" placeholder="Your Name" required></div>

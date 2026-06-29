@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h6 class="mb-0"><?= count($villas) ?> Villas</h6>
-    <a href="/admin/villas/create" class="btn btn-gold btn-sm"><i class="bi bi-plus-lg me-1"></i>Add Villa</a>
+    <a href="<?= url('/admin/villas/create') ?>" class="btn btn-gold btn-sm"><i class="bi bi-plus-lg me-1"></i>Add Villa</a>
 </div>
 
 <div class="row g-4">
@@ -16,8 +16,8 @@
                 <p class="small text-muted mb-2"><?= $v['bedrooms'] ?> Beds • <?= $v['bathrooms'] ?> Baths • <?= $v['max_guests'] ?> Guests</p>
                 <p class="fw-bold text-gold mb-3">$<?= number_format((float)$v['base_price']) ?>/night</p>
                 <div class="d-flex gap-2">
-                    <a href="/admin/villas/edit/<?= $v['id'] ?>" class="btn btn-sm btn-outline-dark flex-grow-1"><i class="bi bi-pencil"></i> Edit</a>
-                    <form action="/admin/villas/delete/<?= $v['id'] ?>" method="POST" class="d-inline">
+                    <a href="<?= url('/admin/villas/edit/' . $v['id']) ?>" class="btn btn-sm btn-outline-dark flex-grow-1"><i class="bi bi-pencil"></i> Edit</a>
+                    <form action="<?= url('/admin/villas/delete/' . $v['id']) ?>" method="POST" class="d-inline">
                         <?= csrf_field() ?>
                         <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm-delete><i class="bi bi-trash"></i></button>
                     </form>

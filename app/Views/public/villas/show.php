@@ -2,7 +2,7 @@
 <section class="villa-hero" style="background-image: url('<?= e($villa['featured_image'] ?? 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1920') ?>')">
     <div class="villa-hero-content">
         <div class="container">
-            <nav aria-label="breadcrumb"><ol class="breadcrumb small"><li class="breadcrumb-item"><a href="/villas" class="text-gold">Villas</a></li><li class="breadcrumb-item active text-white"><?= e($villa['name']) ?></li></ol></nav>
+            <nav aria-label="breadcrumb"><ol class="breadcrumb small"><li class="breadcrumb-item"><a href="<?= url('/villas') ?>" class="text-gold">Villas</a></li><li class="breadcrumb-item active text-white"><?= e($villa['name']) ?></li></ol></nav>
             <h1 class="display-4 fw-bold font-playfair"><?= e($villa['name']) ?></h1>
             <p class="lead mb-0"><?= e($villa['tagline'] ?? '') ?></p>
         </div>
@@ -121,7 +121,7 @@
                     </div>
                     <?php endif; ?>
 
-                    <form action="/booking/create/<?= e($villa['slug']) ?>" method="GET">
+                    <form action="<?= url('/booking/create/' . e($villa['slug'])) ?>" method="GET">
                         <div class="mb-3">
                             <label class="form-label small fw-semibold">Check In</label>
                             <input type="text" name="check_in" class="form-control flatpickr-date" required>

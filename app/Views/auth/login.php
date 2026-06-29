@@ -3,7 +3,7 @@
     <p class="text-muted">Sign in to your account</p>
 </div>
 
-<form action="/login" method="POST">
+<form action="<?= url('/login') ?>" method="POST">
     <?= csrf_field() ?>
     
     <div class="mb-3">
@@ -30,7 +30,7 @@
             <input class="form-check-input" type="checkbox" name="remember" id="remember">
             <label class="form-check-label small" for="remember">Remember me</label>
         </div>
-        <a href="/forgot-password" class="small text-gold">Forgot password?</a>
+        <a href="<?= url('/forgot-password') ?>" class="small text-gold">Forgot password?</a>
     </div>
 
     <button type="submit" class="btn btn-gold w-100 py-2 mb-3">
@@ -42,16 +42,16 @@
     </div>
 
     <div class="d-flex gap-2 mb-4">
-        <a href="/auth/google" class="btn btn-outline-secondary w-50">
+        <a href="<?= url('/auth/google') ?>" class="btn btn-outline-secondary w-50">
             <i class="bi bi-google me-1"></i> Google
         </a>
-        <a href="/auth/facebook" class="btn btn-outline-secondary w-50">
+        <a href="<?= url('/auth/facebook') ?>" class="btn btn-outline-secondary w-50">
             <i class="bi bi-facebook me-1"></i> Facebook
         </a>
     </div>
 
     <p class="text-center text-muted small mb-0">
-        Don't have an account? <a href="/register" class="text-gold fw-semibold">Register here</a>
+        Don't have an account? <a href="<?= url('/register') ?>" class="text-gold fw-semibold">Register here</a>
     </p>
 </form>
 

@@ -10,19 +10,20 @@ use App\Models\Review;
 
 class HomeController extends Controller
 {
-    private Villa $villaModel;
-    private Review $reviewModel;
-
-    public function __construct()
-    {
-        $this->villaModel = new Villa();
-        $this->reviewModel = new Review();
-    }
-
     public function index(): void
     {
-        $villas = $this->villaModel->getFeatured();
-        $testimonials = $this->reviewModel->getFeatured(5);
+        $villas = [];
+        $testimonials = [];
+
+        try {
+            $villaModel = new Villa();
+            $reviewModel = new Review();
+            $villas = $villaModel->getFeatured();
+            $testimonials = $reviewModel->getFeatured(5);
+        } catch (\Exception $e) {
+            // Database not ready - show page with empty data
+            error_log('HomeController: ' . $e->getMessage());
+        }
 
         $data = [
             'pageTitle' => 'Luxury Villa Rental in Zanzibar - Juney Villa Limited',

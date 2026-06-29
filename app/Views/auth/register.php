@@ -3,7 +3,7 @@
     <p class="text-muted">Join us for exclusive villa experiences</p>
 </div>
 
-<form action="/register" method="POST">
+<form action="<?= url('/register') ?>" method="POST">
     <?= csrf_field() ?>
     
     <div class="row g-3">
@@ -50,6 +50,6 @@
     </button>
 
     <p class="text-center text-muted small mb-0">
-        Already have an account? <a href="/login" class="text-gold fw-semibold">Sign in</a>
+        Already have an account? <a href="<?= url('/login') ?>" class="text-gold fw-semibold">Sign in</a>
     </p>
 </form>

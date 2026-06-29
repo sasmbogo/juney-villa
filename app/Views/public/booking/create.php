@@ -16,7 +16,7 @@
             <div class="booking-step"><span class="step-number">4</span> Confirm</div>
         </div>
 
-        <form action="/booking/store" method="POST" id="bookingForm">
+        <form action="<?= url('/booking/store') ?>" method="POST" id="bookingForm">
             <?= csrf_field() ?>
             <input type="hidden" name="villa_id" value="<?= $villa['id'] ?>">
             <input type="hidden" name="check_in" value="<?= e($checkIn) ?>">

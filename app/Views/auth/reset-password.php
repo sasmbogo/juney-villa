@@ -2,7 +2,7 @@
     <h3 class="fw-bold font-playfair">Reset Password</h3>
     <p class="text-muted">Enter your new password</p>
 </div>
-<form action="/reset-password" method="POST">
+<form action="<?= url('/reset-password') ?>" method="POST">
     <?= csrf_field() ?>
     <input type="hidden" name="token" value="<?= e($token ?? '') ?>">
     <div class="mb-3">

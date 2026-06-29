@@ -38,10 +38,10 @@
                 <div class="text-center mt-4">
                     <p class="text-muted small">A confirmation email has been sent to <strong><?= e($booking['guest_email']) ?></strong></p>
                     <div class="d-flex justify-content-center gap-3">
-                        <a href="/booking/invoice/<?= e($booking['booking_number']) ?>" class="btn btn-outline-dark">
+                        <a href="<?= url('/booking/invoice/' . e($booking['booking_number'])) ?>" class="btn btn-outline-dark">
                             <i class="bi bi-download me-1"></i>Download Invoice
                         </a>
-                        <a href="/" class="btn btn-gold">
+                        <a href="<?= url('/') ?>" class="btn btn-gold">
                             <i class="bi bi-house me-1"></i>Back to Home
                         </a>
                     </div>

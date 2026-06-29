@@ -53,6 +53,10 @@ class Controller
 
     protected function redirect(string $url, int $statusCode = 302): void
     {
+        // Auto-prepend base path for relative URLs
+        if (str_starts_with($url, '/') && !str_starts_with($url, '//') && function_exists('url')) {
+            $url = url($url);
+        }
         header("Location: {$url}", true, $statusCode);
         exit;
     }

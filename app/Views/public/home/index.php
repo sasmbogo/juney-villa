@@ -13,7 +13,7 @@
             
             <!-- Booking Search Form -->
             <div class="booking-search-card" data-aos="fade-up" data-aos-delay="200">
-                <form action="/booking/search" method="GET" class="row g-3 align-items-end">
+                <form action="<?= url('/booking/search') ?>" method="GET" class="row g-3 align-items-end">
                     <div class="col-md-3">
                         <label class="form-label small text-start d-block">Check In</label>
                         <input type="text" name="check_in" class="form-control flatpickr-date" placeholder="Select date" required>
@@ -114,7 +114,7 @@
                     <div class="villa-card-img">
                         <img src="<?= e($villa['featured_image'] ?? 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600') ?>" alt="<?= e($villa['name']) ?>">
                         <div class="villa-card-overlay">
-                            <a href="/villas/<?= e($villa['slug']) ?>" class="btn btn-gold">View Details</a>
+                            <a href="<?= url('/villas/' . e($villa['slug'])) ?>" class="btn btn-gold">View Details</a>
                         </div>
                         <span class="villa-badge">From $<?= number_format((float)$villa['base_price']) ?>/night</span>
                     </div>
@@ -132,7 +132,7 @@
             <?php endforeach; ?>
         </div>
         <div class="text-center mt-5">
-            <a href="/villas" class="btn btn-outline-dark btn-lg px-5">View All Villas</a>
+            <a href="<?= url('/villas') ?>" class="btn btn-outline-dark btn-lg px-5">View All Villas</a>
         </div>
     </div>
 </section>
@@ -193,7 +193,7 @@
     <div class="container text-center text-white py-5">
         <h2 class="display-4 fw-bold font-playfair mb-3" data-aos="fade-up">Ready to Experience Paradise?</h2>
         <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Book your dream villa in Zanzibar today and create memories that last a lifetime</p>
-        <a href="/booking" class="btn btn-gold btn-lg px-5 py-3" data-aos="fade-up" data-aos-delay="200">
+        <a href="<?= url('/booking') ?>" class="btn btn-gold btn-lg px-5 py-3" data-aos="fade-up" data-aos-delay="200">
             <i class="bi bi-calendar-check me-2"></i>Book Now
         </a>
     </div>

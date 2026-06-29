@@ -30,8 +30,8 @@
                                     <span><i class="bi bi-people"></i> <?= $villa['max_guests'] ?> Guests</span>
                                 </div>
                                 <div class="d-flex gap-2">
-                                    <a href="/villas/<?= e($villa['slug']) ?>" class="btn btn-gold btn-sm flex-grow-1">View Details</a>
-                                    <a href="/booking/create/<?= e($villa['slug']) ?>" class="btn btn-outline-dark btn-sm">Book</a>
+                                    <a href="<?= url('/villas/' . e($villa['slug'])) ?>" class="btn btn-gold btn-sm flex-grow-1">View Details</a>
+                                    <a href="<?= url('/booking/create/' . e($villa['slug'])) ?>" class="btn btn-outline-dark btn-sm">Book</a>
                                 </div>
                             </div>
                         </div>

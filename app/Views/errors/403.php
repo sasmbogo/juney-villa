@@ -11,7 +11,7 @@
         <p class="error-code">403</p>
         <h2 class="fw-bold mb-3">Access Denied</h2>
         <p class="text-muted mb-4">You don't have permission to access this page.</p>
-        <a href="/" class="btn btn-dark px-4 py-2">Back to Home</a>
+        <a href="<?= url('/') ?>" class="btn btn-dark px-4 py-2">Back to Home</a>
     </div>
 </body>
 </html>
