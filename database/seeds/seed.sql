@@ -69,7 +69,7 @@ SELECT 4, id FROM `permissions` WHERE slug IN ('view-dashboard','manage-payments
 -- ================================================================
 
 INSERT INTO `users` (`role_id`, `first_name`, `last_name`, `email`, `phone`, `password`, `email_verified_at`, `must_change_password`, `is_active`) VALUES
-(1, 'Admin', 'Juney Villa', 'admin@juneyvillaszanzibar.co.tz', '+255777000000', '$2y$12$LQv3c1yqBo9SkvXS7EXIr.6ZR8.G7xYsYzxIjJoiDy6dB5z5gL7Vy', NOW(), 1, 1);
+(1, 'Admin', 'Juney Villa', 'admin@juneyvillaszanzibar.co.tz', '+255777000000', '$2y$12$PYJBUnX6Lby9ZitHCqL9l.rwIoCCPfsodE3SW6zK7TKmA2YAGES7u', NOW(), 1, 1);
 
 -- ================================================================
 -- COMPANY INFO

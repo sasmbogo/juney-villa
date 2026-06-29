@@ -52,7 +52,7 @@ class User extends Model
     private function incrementLoginAttempts(int $userId): void
     {
         $this->rawExecute(
-            "UPDATE users SET login_attempts = login_attempts + 1, locked_until = IF(login_attempts >= 4, DATE_ADD(NOW(), INTERVAL 30 MINUTE), locked_until) WHERE id = :id",
+            "UPDATE users SET login_attempts = login_attempts + 1, locked_until = IF(login_attempts >= 9, DATE_ADD(NOW(), INTERVAL 15 MINUTE), locked_until) WHERE id = :id",
             ['id' => $userId]
         );
     }
